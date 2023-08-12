@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Saved Notes</title>
+  <style>
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="saved_notes.html">Saved Notes</a></li>
+        </ul>
+      </nav>  
+  <h1>Saved Notes</h1>
+  <ul>
+    <li>Note 1</li>
+  </ul>
+  <div class="saved-note">
+    <h2>Saved Note</h2>
+    <p id="saved-note-content"></p>
+  </div>
+  <script>
+    const savedNoteContent = document.getElementById("saved-note-content");
+    const savedNote = localStorage.getItem("savedNote");
+    
+    if (savedNote) {
+      savedNoteContent.textContent = savedNote;
+    }
+</script>
+</body>
+</html>
