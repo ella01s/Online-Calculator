@@ -1,3 +1,3 @@
-# Online-Math-Study-tool
+# Online-Study-tool
 Includes:
 - Online Calculator
