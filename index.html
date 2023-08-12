@@ -5,8 +5,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
   <title>Online Calculator</title>
+  <style>
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #333;
+      overflow: hidden;
+    }
+
+    .navbar ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .navbar li {
+      float: left;
+    }
+
+    .navbar li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    .navbar li a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    body {
+      margin: 0;
+      background-color: #f0f0f0;
+      display: flex;
+    }
+
+    .calculator,
+    .notepad {
+      flex: 1;
+      background-color: #e1ebf0;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin: 20px;
+      box-sizing: border-box;
+    }
+
+    #display {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+      font-size: 24px;
+    }
+
+    textarea {
+      width: 98%;
+      height: 300px;
+      resize: none;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+  </style>
 </head>
 <body>
+  <nav class="navbar">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="saved_notes.html">Saved Notes</a></li>
+    </ul>
+  </nav>
   <div class="calculator">
     <input type="text" id="display" readonly>
     <div class="buttons">      
@@ -35,7 +106,25 @@
       <button class="btn" onclick="calculate()">=</button>
       <button class="btn" onclick="appendToDisplay('+')">+</button>
     </div>
-  </div>
+    <div class="notepad">
+      <h2>Notepad</h2>
+      <textarea id="notepad-text"></textarea>
+      <button id="save-button">Save Note</button>
+    </div>    
   <script src="script.js"></script>
+  <script>
+    const saveButton = document.getElementById("save-button");
+    const notepadText = document.getElementById("notepad-text");
+  
+    saveButton.addEventListener("click", () => {
+      const noteContent = notepadText.value;
+      if (noteContent) {
+        localStorage.setItem("savedNote", noteContent);
+        alert("Note saved!");
+      } else {
+        alert("Cannot save an empty note.");
+      }
+    });
+  </script>
 </body>
 </html>
